@@ -1,0 +1,22 @@
+{
+  "name": "demo-monorepo-marketplace",
+  "owner": {
+    "name": "Richard"
+  },
+  "metadata": {
+    "description": "Alignment plugins for the demo-monorepo: design tokens, per-app UI conventions, and testing gates for kddi, naukri, seek, and nab."
+  },
+  "plugins": [
+    {
+      "name": "demo-monorepo-plugin",
+      "source": ".",
+      "description": "Keeps agents aligned with demo-monorepo conventions: design tokens, per-app UI patterns, accessibility, and testing/quality gates.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "repository": "https://github.com/zirikii/demo-monorepo-plugin",
+      "keywords": ["demo-monorepo", "design-tokens", "ui-conventions", "alignment", "skills"],
+      "category": "development",
+      "tags": ["conventions", "design-system", "testing"]
+    }
+  ]
+}
