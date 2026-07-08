@@ -1,0 +1,16 @@
+{
+  "name": "demo-monorepo-plugin",
+  "version": "0.1.0",
+  "description": "Alignment skills for the demo-monorepo: design tokens, per-app UI conventions, testing and quality gates. Keeps local and cloud agents consistent when changing kddi, naukri, seek, or nab.",
+  "author": {
+    "name": "Richard"
+  },
+  "license": "MIT",
+  "keywords": [
+    "demo-monorepo",
+    "design-tokens",
+    "ui-conventions",
+    "alignment",
+    "skills"
+  ]
+}

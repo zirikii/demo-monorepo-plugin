@@ -1,0 +1,17 @@
+---
+description: Route agents to the demo-monorepo alignment skills before making UI or feature changes to kddi, naukri, seek, or nab.
+alwaysApply: true
+---
+
+# Demo monorepo alignment
+
+When the workspace is the demo-monorepo (pnpm workspace with `apps/kddi`, `apps/naukri`, `apps/seek`, `apps/nab`, and `packages/ui`), or when a task references one of those apps:
+
+1. Before making any UI change, read the `monorepo-alignment` skill for cross-cutting rules, then the app-specific skill (`kddi-conventions`, `naukri-conventions`, `seek-conventions`, or `nab-conventions`).
+2. Use `design-tokens` when picking colors, radii, fonts, or spacing — never invent new brand values.
+3. Use `testing-and-quality` before finishing: run the app's Vitest suite and lint, and add tests for new behavior.
+4. Hard boundaries that always apply:
+   - Each app has its own token system; never share Tailwind configs across apps.
+   - Use the app's class joiner: `cx` in kddi, `cn` in naukri/seek.
+   - nab HTML is generated — edit `scripts/pages.js` / templates, never output HTML.
+   - No real databases, no real auth: JSON files + localStorage, mock JWT sessions.
