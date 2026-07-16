@@ -10,11 +10,11 @@
     {
       "name": "demo-monorepo-plugin",
       "source": ".",
-      "description": "Keeps agents aligned with demo-monorepo conventions: design tokens, per-app UI patterns, accessibility, and testing/quality gates.",
-      "version": "0.1.0",
+      "description": "Keeps agents aligned with demo-monorepo conventions: design tokens, per-app UI patterns, accessibility, testing/quality gates, and mock-company-repo scaffolding.",
+      "version": "0.2.0",
       "license": "MIT",
       "repository": "https://github.com/zirikii/demo-monorepo-plugin",
-      "keywords": ["demo-monorepo", "design-tokens", "ui-conventions", "alignment", "skills"],
+      "keywords": ["demo-monorepo", "design-tokens", "ui-conventions", "alignment", "skills", "mock-company-repo"],
       "category": "development",
       "tags": ["conventions", "design-system", "testing"]
     }
