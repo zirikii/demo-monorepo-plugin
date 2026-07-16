@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0 — 2026-07-16
+
+- Move `mock-company-repo` skill (and its `prompts/` examples) from demo-monorepo into this plugin.
+- Prompt output path is now `skills/mock-company-repo/prompts/`.
+
 ## 0.1.0 — 2026-07-08
 
 - Initial release.
