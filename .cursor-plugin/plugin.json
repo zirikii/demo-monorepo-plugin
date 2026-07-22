@@ -1,17 +1,16 @@
 {
   "name": "demo-monorepo-plugin",
-  "version": "0.2.0",
-  "description": "Alignment skills for the demo-monorepo: design tokens, per-app UI conventions, testing and quality gates, plus mock-company-repo for scaffolding new company demos. Keeps local and cloud agents consistent when changing kddi, naukri, seek, or nab.",
+  "version": "0.3.0",
+  "description": "Team plugin for demo-monorepo: mock-company-repo scaffolds new company demos (prompt → build → verify → PR); shared alignment skills cover tokens and quality gates for existing apps.",
   "author": {
     "name": "Richard"
   },
   "license": "MIT",
   "keywords": [
     "demo-monorepo",
+    "mock-company-repo",
     "design-tokens",
-    "ui-conventions",
     "alignment",
-    "skills",
-    "mock-company-repo"
+    "skills"
   ]
 }

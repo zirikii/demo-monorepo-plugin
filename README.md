@@ -1,31 +1,28 @@
 # demo-monorepo-plugin
 
-A Cursor plugin that keeps agents aligned with the conventions of the [demo-monorepo](https://github.com/zirikii/demo-monorepo) when building or changing its apps (kddi, naukri, seek, nab) — whether the agent runs locally or in the cloud. It also ships the `mock-company-repo` skill for scaffolding new company demo apps into that monorepo.
+A Cursor plugin for the [demo-monorepo](https://github.com/zirikii/demo-monorepo). Its primary team skill is **`mock-company-repo`**: research a company, generate a build prompt, scaffold a realistic look-alike demo into the monorepo, verify with computer use, and open a PR. Shared alignment skills cover hard boundaries, design tokens, and quality gates when editing existing apps.
 
 ## What it does
 
-When an agent makes UI or feature changes to a demo-monorepo app, the plugin's rule routes it to the right skills so changes stay on-brand and on-pattern: correct design tokens, the app's component/state conventions, accessibility patterns, and the repo's testing and lint gates.
+- **`mock-company-repo`** — the team workflow for creating new company demos (prompt → build → computer-use verification → PR in demo-monorepo).
+- **Alignment skills** — keep edits to existing apps on-pattern: monorepo hard boundaries, design tokens, testing/lint gates.
 
-Use `mock-company-repo` when you want a prompt (and optionally an end-to-end build) that scaffolds a large, realistic look-alike demo for a company into the monorepo.
+There are **no per-app convention skills**. App-specific detail lives in each app's `AGENTS.md` / `README.md` inside demo-monorepo, and in the prompts under `skills/mock-company-repo/prompts/`.
 
 ## Components
 
 ### Rule
 
-- `rules/monorepo-alignment.mdc` (always applied) — routes agents to the relevant skill before UI changes and enforces the hard boundaries (per-app token systems, `cx` vs `cn`, generated nab HTML, mock-only auth/data).
+- `rules/monorepo-alignment.mdc` (always applied) — points agents at the shared skills and hard boundaries; routes new demos to `mock-company-repo`.
 
 ### Skills
 
 | Skill | Use when |
 | --- | --- |
-| `monorepo-alignment` | Any change to any app — cross-cutting principles, shared `@demo/ui` package, hard boundaries |
+| `mock-company-repo` | Scaffold (or regenerate) a company demo into demo-monorepo — research, prompt, build, verify, PR |
+| `monorepo-alignment` | Any change to an existing app — cross-cutting principles, shared `@demo/ui`, hard boundaries |
 | `design-tokens` | Picking any color, radius, font, or spacing value |
-| `kddi-conventions` | Changing the kddi NOC dashboard (Vite + React 19, Tailwind v4, JS) |
-| `naukri-conventions` | Changing the naukri job portal (Next.js 14, shadcn/ui, TS) |
-| `seek-conventions` | Changing the seek marketplace (Next.js 15, Braid palette, TS, en-AU) |
-| `nab-conventions` | Changing the nab static site (generated HTML, Adobe Client Data Layer) |
 | `testing-and-quality` | Before finishing any change — Vitest suites, lint/typecheck, definition of done |
-| `mock-company-repo` | Research a company and generate (or generate-and-build) a mock demo app prompt under `skills/mock-company-repo/prompts/` |
 
 ## Installation
 
@@ -45,7 +42,7 @@ Add this repository as an additional repo when launching a cloud agent against t
 
 ## Keeping it current
 
-The skills describe the monorepo as it exists today (token values, file paths, script names). When the monorepo's conventions change — new tokens, renamed scripts, new apps — update the corresponding skill in the same PR or shortly after, and bump the version in `.cursor-plugin/plugin.json`.
+Update `design-tokens` / `testing-and-quality` / `monorepo-alignment` when monorepo conventions change (new tokens, renamed scripts). New company demos go through `mock-company-repo` — do not add per-app skills here. Bump the version in `.cursor-plugin/plugin.json` when you ship plugin changes.
 
 ## License
 

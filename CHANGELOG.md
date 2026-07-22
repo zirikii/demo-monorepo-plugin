@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0 — 2026-07-22
+
+- Remove per-app convention skills (`kddi-conventions`, `naukri-conventions`, `seek-conventions`, `nab-conventions`).
+- Reframe the plugin around team-level `mock-company-repo` for scaffolding demos into demo-monorepo; keep shared `monorepo-alignment`, `design-tokens`, and `testing-and-quality`.
+- Update always-applied rule and README accordingly.
+
 ## 0.2.0 — 2026-07-16
 
 - Move `mock-company-repo` skill (and its `prompts/` examples) from demo-monorepo into this plugin.
