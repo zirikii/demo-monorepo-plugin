@@ -4,19 +4,19 @@
     "name": "Richard"
   },
   "metadata": {
-    "description": "Alignment plugins for the demo-monorepo: design tokens, per-app UI conventions, and testing gates for kddi, naukri, seek, and nab."
+    "description": "Plugins for the demo-monorepo: mock-company-repo scaffolding plus shared alignment skills (tokens, quality gates)."
   },
   "plugins": [
     {
       "name": "demo-monorepo-plugin",
       "source": ".",
-      "description": "Keeps agents aligned with demo-monorepo conventions: design tokens, per-app UI patterns, accessibility, testing/quality gates, and mock-company-repo scaffolding.",
-      "version": "0.2.0",
+      "description": "mock-company-repo for scaffolding company demos into demo-monorepo, plus shared design-token and testing alignment skills.",
+      "version": "0.3.0",
       "license": "MIT",
       "repository": "https://github.com/zirikii/demo-monorepo-plugin",
-      "keywords": ["demo-monorepo", "design-tokens", "ui-conventions", "alignment", "skills", "mock-company-repo"],
+      "keywords": ["demo-monorepo", "mock-company-repo", "design-tokens", "alignment", "skills"],
       "category": "development",
-      "tags": ["conventions", "design-system", "testing"]
+      "tags": ["scaffolding", "design-system", "testing"]
     }
   ]
 }

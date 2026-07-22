@@ -1,6 +1,6 @@
 ---
 name: monorepo-alignment
-description: Cross-cutting principles for the demo-monorepo (kddi, naukri, seek, nab, @demo/ui). Read this first before any UI or feature change, then read the app-specific conventions skill.
+description: Cross-cutting principles for the demo-monorepo (apps under apps/*, packages/ui). Read this first before any UI or feature change. Use mock-company-repo to scaffold new company demos.
 ---
 
 # Demo monorepo alignment
@@ -34,7 +34,7 @@ naukri and seek collide on port 3000. Run the second one with `PORT=3001 pnpm --
 5. No real database. Persistence is JSON files (naukri/seek) and localStorage (kddi).
 6. Do not tighten auth. Login is intentionally mock: any email/password is accepted, sessions are `jose` HS256 JWTs signed with `DEMO_AUTH_SECRET` (fallback `"change-me"`).
 7. kddi's assignee field is intentionally stubbed (`AssigneePlaceholder.jsx`) — leave it unless explicitly asked.
-8. When changing nab interactive elements, preserve Adobe Client Data Layer events (see `nab-conventions`).
+8. When changing nab interactive elements, preserve Adobe Client Data Layer events (`apps/nab/AGENTS.md` and the data-layer helpers in that app).
 
 ## Cross-app UI conventions
 
@@ -48,7 +48,7 @@ naukri and seek collide on port 3000. Run the second one with `PORT=3001 pnpm --
 
 ## Workflow
 
-1. Read the app-specific skill (`kddi-conventions`, `naukri-conventions`, `seek-conventions`, `nab-conventions`).
-2. Pick colors/radii/fonts from `design-tokens` — never invent hex values.
+1. For **new company demos**, run `mock-company-repo` (team-level skill) — research, scaffold under `apps/<slug>/`, verify with computer use, open a PR in demo-monorepo. Do not add per-app convention skills to this plugin.
+2. For **edits to existing apps**, read this skill, then pick colors/radii/fonts from `design-tokens` — never invent hex values. Follow in-app `AGENTS.md` / `README.md` when present.
 3. Follow `testing-and-quality` before finishing: per-app Vitest + `pnpm lint`.
 4. When pushing from a cloud agent and origin is Bitbucket, use `scripts/git-push.sh -u origin <branch>` (fixes `x-token-auth` username) instead of raw `git push`.
