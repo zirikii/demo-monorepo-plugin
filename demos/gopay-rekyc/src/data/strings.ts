@@ -12,7 +12,7 @@ export const S = {
     id: "Kelola status verifikasi dan data identitas kamu.",
     en: "Manage your verification status and identity data.",
   },
-  identityCardTitle: { id: "Identitas terverifikasi", en: "Identitas terverifikasi" },
+  identityCardTitle: { id: "Identitas terverifikasi", en: "Verified identity" },
   identityCardBadge: { id: "Terverifikasi", en: "Verified" },
   seeMoreData: { id: "Lihat data lain", en: "See more data" },
   seeLessData: { id: "Sembunyikan data", en: "See less data" },
@@ -109,6 +109,11 @@ export const S = {
   diraSubtitle: { id: "Asisten GoPay", en: "GoPay assistant" },
   inAppBrowserClose: { id: "Tutup", en: "Close" },
   genieDismiss: { id: "Tutup", en: "Dismiss" },
+
+  navHome: { id: "Home", en: "Home" },
+  navDira: { id: "Dira", en: "Dira" },
+  navAccount: { id: "Akun", en: "Account" },
+  navWallet: { id: "Dompet", en: "Wallet" },
 } satisfies Record<string, Bilingual>;
 
 export type StringKey = keyof typeof S;

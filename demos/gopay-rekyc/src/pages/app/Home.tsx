@@ -45,7 +45,9 @@ export function Home() {
         </div>
 
         <section className="rounded-3xl bg-gradient-to-br from-gopay to-gopay-deep px-5 py-4 text-white">
-          <p className="text-xs opacity-80">GoPay Coins & saldo</p>
+          <p className="text-xs opacity-80">
+            {state.locale === "id" ? "GoPay Coins & saldo" : "GoPay Coins & balance"}
+          </p>
           <p className="mt-1 text-2xl font-extrabold">{formatRupiah(842_500)}</p>
           <Link
             to="/app/vac"
