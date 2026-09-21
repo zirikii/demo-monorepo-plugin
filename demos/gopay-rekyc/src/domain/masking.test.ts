@@ -4,6 +4,7 @@ import {
   MASKED_FIELDS,
   UNMASKED_FIELDS,
   isMaskedField,
+  maskAddress,
   maskDateOfBirth,
   maskIdentity,
   maskName,
@@ -21,6 +22,12 @@ describe("masking rules", () => {
 
   it("keeps the first letter of each name part", () => {
     expect(maskName("Rani Puspita Dewi")).toMatch(/^R•+ P•+ D•+$/);
+  });
+
+  it("keeps the street name but hides the house number and everything after it", () => {
+    const masked = maskAddress("Jl. Kemang Selatan VIII No. 42");
+    expect(masked).toBe("Jl. Kemang ••••••••");
+    expect(masked).not.toContain("42");
   });
 
   it("leaves only the year of birth visible", () => {

@@ -52,13 +52,11 @@ export function maskDateOfBirth(iso: string): string {
   return `${DOT.repeat(2)}-${DOT.repeat(2)}-${date.getFullYear()}`;
 }
 
+/** Keeps the street name legible and collapses the rest to a fixed run so rows stay one line. */
 export function maskAddress(address: string): string {
-  const [street = "", ...rest] = address.split(",");
-  const words = street.trim().split(/\s+/).filter(Boolean);
-  const visible = words.slice(0, 1).join(" ");
-  const maskedTail = words.slice(1).map((word) => DOT.repeat(Math.min(word.length, 6)));
-  const maskedRest = rest.map(() => DOT.repeat(5));
-  return [visible, ...maskedTail].join(" ") + (maskedRest.length ? `, ${maskedRest.join(", ")}` : "");
+  const words = address.replace(/,/g, " ").trim().split(/\s+/).filter(Boolean);
+  const visible = words.slice(0, 2).join(" ");
+  return `${visible} ${DOT.repeat(8)}`.trim();
 }
 
 export function maskRtRw(value: string): string {
@@ -67,7 +65,7 @@ export function maskRtRw(value: string): string {
 
 export function maskRegion(value: string): string {
   const head = value.slice(0, 2);
-  return `${head}${DOT.repeat(Math.max(value.length - 2, 3))}`;
+  return `${head}${DOT.repeat(Math.min(Math.max(value.length - 2, 3), 6))}`;
 }
 
 export function maskField(field: IdentityField, value: string): string {
