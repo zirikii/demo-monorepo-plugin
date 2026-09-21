@@ -63,6 +63,7 @@ export type DemoAction =
   | { type: "setLocale"; locale: Locale }
   | { type: "patchScenario"; patch: Partial<Scenario> }
   | { type: "resetDemo" }
+  | { type: "resetLedger" }
   | { type: "startSession"; entryPoint: EntryPoint }
   | { type: "abandonSession" }
   | { type: "completeFr" }

@@ -221,7 +221,7 @@ export function ScenarioConsole() {
       </div>
 
       <div className="flex justify-end">
-        <Button variant="secondary" onClick={() => dispatch({ type: "resetDemo" })}>
+        <Button variant="secondary" onClick={() => dispatch({ type: "resetLedger" })}>
           Reset ledger and session
         </Button>
       </div>

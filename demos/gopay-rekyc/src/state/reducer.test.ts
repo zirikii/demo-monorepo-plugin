@@ -121,3 +121,35 @@ describe("re-KYC session flow", () => {
     );
   });
 });
+
+describe("resetting", () => {
+  const CONFIGURED: DemoAction[] = [
+    { type: "setLocale", locale: "en" },
+    { type: "patchScenario", patch: { oddDueInDays: -45, ocrConfidence: 0.4 } },
+    ...RUN_FLOW,
+  ];
+
+  it("clears the scenario as well as the ledger on a full reset", () => {
+    const state = drive({}, [...CONFIGURED, { type: "resetDemo" }]);
+
+    expect(state.scenario).toEqual(DEFAULT_SCENARIO);
+    expect(state.ledger.submissions).toHaveLength(1);
+    expect(state.session).toBeNull();
+  });
+
+  it("keeps the configured scenario when only the ledger is reset", () => {
+    const state = drive({}, [...CONFIGURED, { type: "resetLedger" }]);
+
+    expect(state.scenario.ocrConfidence).toBe(0.4);
+    expect(state.scenario.oddDueInDays).toBe(-45);
+    expect(state.ledger.submissions).toHaveLength(1);
+  });
+
+  it("leaves the chosen language alone so a reset does not switch the UI back", () => {
+    const full = drive({}, [...CONFIGURED, { type: "resetDemo" }]);
+    const ledgerOnly = drive({}, [...CONFIGURED, { type: "resetLedger" }]);
+
+    expect(full.locale).toBe("en");
+    expect(ledgerOnly.locale).toBe("en");
+  });
+});

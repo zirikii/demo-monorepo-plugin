@@ -206,7 +206,10 @@ export function demoReducer(state: DemoState, action: DemoAction): DemoState {
     }
 
     case "resetDemo":
-      return createInitialState(state.now, state.scenario);
+      return { ...createInitialState(state.now), locale: state.locale };
+
+    case "resetLedger":
+      return { ...createInitialState(state.now, state.scenario), locale: state.locale };
 
     case "startSession": {
       const session = newSession(state, action.entryPoint);
