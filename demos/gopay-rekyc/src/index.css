@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+
+@theme {
+  /* GoPay — payments vertical primary from the Gojek brand palette */
+  --color-gopay: #00aed6;
+  --color-gopay-deep: #0091b4;
+  --color-gopay-dark: #05323c;
+  --color-gopay-tint: #e6f8fc;
+
+  /* Gojek green — published brand guideline value */
+  --color-gojek: #00aa13;
+  --color-gojek-deep: #008a0f;
+  --color-gojek-tint: #e6f6e8;
+
+  /* Neutrals */
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #5a5a5a;
+  --color-ink-faint: #8c8c8c;
+  --color-line: #e6e6e6;
+  --color-line-soft: #f2f2f2;
+  --color-surface: #f6f7f6;
+  --color-surface-deep: #eef0ee;
+  --color-card: #ffffff;
+
+  /* Status */
+  --color-state-success: #00aa13;
+  --color-state-success-tint: #e6f6e8;
+  --color-state-warning: #ef6a00;
+  --color-state-warning-tint: #fdf0e6;
+  --color-state-danger: #ee2737;
+  --color-state-danger-tint: #fde9eb;
+  --color-state-info: #00aed6;
+  --color-state-info-tint: #e6f8fc;
+
+  --font-sans: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --shadow-card: 0 10px 30px rgba(16, 24, 16, 0.08);
+  --shadow-float: 0 18px 48px rgba(16, 24, 16, 0.16);
+  --shadow-phone: 0 30px 80px rgba(5, 50, 60, 0.28);
+
+  --animate-fade-up: fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.3s ease-out both;
+  --animate-slide-up: slide-up 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scan: scan 2s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scan {
+  0%,
+  100% {
+    transform: translateY(-38%);
+  }
+  50% {
+    transform: translateY(38%);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+.phone-scroll {
+  scrollbar-width: none;
+}
+
+.phone-scroll::-webkit-scrollbar {
+  display: none;
+}
