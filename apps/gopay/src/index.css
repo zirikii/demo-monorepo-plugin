@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+
+@theme {
+  /* GoPay / Gojek brand — Asphalt green + payments cyan from published guidelines */
+  --color-gopay: #00aa13;
+  --color-gopay-deep: #008a0f;
+  --color-gopay-dark: #05320e;
+  --color-gopay-tint: #e6f6e8;
+  --color-pay: #00aed6;
+  --color-pay-deep: #008fb3;
+  --color-pay-tint: #e6f7fb;
+  --color-danger: #ee2737;
+  --color-danger-tint: #fde8ea;
+  --color-warn: #ef6a00;
+  --color-warn-tint: #fff1e6;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #5a5a5a;
+  --color-ink-faint: #8c8c8c;
+  --color-line: #e6e6e6;
+  --color-line-soft: #f0f0f0;
+  --color-surface: #f5f6f5;
+  --color-card: #ffffff;
+  --font-sans: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --shadow-phone: 0 24px 64px rgba(16, 24, 16, 0.18);
+  --shadow-card: 0 8px 24px rgba(16, 24, 16, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #eceee9;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --demo-accent: #00aa13;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

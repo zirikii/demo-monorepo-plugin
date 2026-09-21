@@ -1,0 +1,13 @@
+{
+  "brand": "GoPay",
+  "site": "https://www.gopay.co.id/",
+  "note": "Unofficial demo. Wordmark recreated as SVG from the public GoPay / Gojek brand green. Not affiliated with GoPay, Gojek, or GoTo.",
+  "green": "#00AA13",
+  "paymentsBlue": "#00AED6",
+  "assets": [
+    { "file": "logo-green.svg", "usage": "Wordmark on light backgrounds" },
+    { "file": "logo-white.svg", "usage": "Wordmark on green headers" },
+    { "file": "mark.svg", "usage": "App icon / rounded tile" },
+    { "file": "favicon.svg", "usage": "Browser tab favicon" }
+  ]
+}

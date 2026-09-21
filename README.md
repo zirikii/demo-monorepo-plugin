@@ -34,7 +34,10 @@ Clone into Cursor's local plugin directory:
 git clone https://github.com/zirikii/demo-monorepo-plugin.git ~/.cursor/plugins/local/demo-monorepo-plugin
 ```
 
-The plugin is picked up automatically; no install step needed.
+Agent alignment skills (design tokens, per-app conventions, `mock-company-repo`)
+live in this plugin. A runnable **GoPay ReKYC** demo is included at `apps/gopay/`
+(`pnpm install && pnpm dev` in that folder, port 5184) because this agent run
+could not push to demo-monorepo.
 
 ### Cloud agents
 
