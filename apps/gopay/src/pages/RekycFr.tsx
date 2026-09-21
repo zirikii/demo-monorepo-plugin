@@ -1,23 +1,28 @@
 import { useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Lightbulb, Glasses, HardHat, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { ConsumerLayout } from "@/components/layout/ConsumerLayout";
-import { AppHeader } from "@/components/layout/AppHeader";
 import { Button } from "@/components/ui/Button";
 import { useRekyc } from "@/hooks/useRekyc";
 
+const readinessTiles = [
+  { icon: Lightbulb, label: "Enough lighting" },
+  { icon: Glasses, label: "No glasses" },
+  { icon: HardHat, label: "Don't wear hat" },
+];
+
 export function RekycFrPage() {
   const { session, setSession, scenario } = useRekyc();
-  const [busy, setBusy] = useState(false);
+  const [stage, setStage] = useState<"ready" | "capturing">("ready");
   const [failed, setFailed] = useState(false);
   const navigate = useNavigate();
 
   function capture() {
-    setBusy(true);
+    setStage("capturing");
     window.setTimeout(() => {
       if (!scenario.frPass) {
         setFailed(true);
-        setBusy(false);
+        setStage("ready");
         return;
       }
       setSession({
@@ -26,28 +31,61 @@ export function RekycFrPage() {
         frSelfieDataUrl: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>",
       });
       navigate("/app/rekyc/onboarding");
-    }, 900);
+    }, 1100);
   }
 
   return (
     <ConsumerLayout title="Verifikasi wajah" showNav={false}>
-      <AppHeader title="Pastikan ini kamu" onBack={() => navigate("/app/rekyc")} />
-      <div className="flex flex-1 flex-col items-center px-6 py-8">
-        <div className="flex h-56 w-44 items-center justify-center rounded-[120px] border-4 border-gopay bg-gopay-tint">
-          {busy ? <Loader2 className="h-8 w-8 animate-spin text-gopay" aria-hidden="true" /> : null}
+      <div className="relative flex h-full flex-col bg-[#3a3a3a]">
+        <div className="flex items-center justify-between px-4 pb-2 pt-3 text-white">
+          <button
+            type="button"
+            onClick={() => navigate("/app/rekyc")}
+            className="text-sm font-semibold"
+            aria-label="Kembali"
+          >
+            ←
+          </button>
+          <span className="text-sm font-bold">View Guides</span>
         </div>
-        <p className="mt-6 text-center text-sm text-ink-soft">
-          Selfie live dicocokkan dengan wajah di berkas. Kalau gagal, foto e-KTP tidak dibuka dan data
-          lama tidak berubah.
+        <p className="px-4 pt-4 text-center text-sm font-bold text-white">
+          Fit your face in the photo area
         </p>
-        {failed ? (
-          <p className="mt-4 text-center text-sm font-semibold text-danger">
-            Wajah tidak cocok. Coba lagi atau batalkan — data e-KTP tidak diubah.
-          </p>
-        ) : null}
-        <Button className="mt-8 w-full" onClick={capture} disabled={busy}>
-          {busy ? "Mencocokkan…" : "Ambil selfie"}
-        </Button>
+        <div className="relative mt-6 flex justify-center">
+          <div className="flex h-64 w-52 items-center justify-center overflow-hidden rounded-[130px] border-4 border-gopay bg-gopay-tint">
+            {stage === "capturing" ? (
+              <Loader2 className="h-8 w-8 animate-spin text-gopay" aria-hidden="true" />
+            ) : (
+              <span className="px-6 text-center text-xs text-gopay-deep">Kamera selfie</span>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-auto rounded-t-3xl bg-white px-4 pb-5 pt-5">
+          <h2 className="text-lg font-extrabold text-ink">Get ready for face verification</h2>
+          <div className="mt-4 grid grid-cols-3 gap-3 rounded-2xl border border-line bg-surface p-3">
+            {readinessTiles.map((tile) => (
+              <div key={tile.label} className="flex flex-col items-center gap-2 text-center">
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-pay-tint">
+                  <tile.icon className="h-6 w-6 text-pay-deep" aria-hidden="true" />
+                </span>
+                <span className="text-[11px] font-medium text-ink-soft">{tile.label}</span>
+              </div>
+            ))}
+          </div>
+          {failed ? (
+            <p className="mt-3 text-center text-sm font-semibold text-danger">
+              Wajah tidak cocok. Data e-KTP tidak diubah — coba lagi atau batalkan.
+            </p>
+          ) : (
+            <p className="mt-3 text-center text-xs text-ink-faint">
+              Selfie live dicocokkan dengan wajah di berkas. Kalau gagal, foto e-KTP tidak dibuka.
+            </p>
+          )}
+          <Button className="mt-4 w-full" onClick={capture} disabled={stage === "capturing"}>
+            {stage === "capturing" ? "Mencocokkan…" : "Got it, I'm ready"}
+          </Button>
+        </div>
       </div>
     </ConsumerLayout>
   );
