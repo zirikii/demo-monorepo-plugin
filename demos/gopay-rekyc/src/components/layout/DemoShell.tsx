@@ -19,7 +19,7 @@ export function DemoShell() {
   const { state, dispatch } = useDemo();
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="flex min-h-screen flex-col bg-surface">
       <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-4 px-6 py-3">
           <div className="flex items-center gap-3">
@@ -65,7 +65,7 @@ export function DemoShell() {
           </div>
         </div>
       </header>
-      <main>
+      <main className="flex-1">
         <Outlet />
       </main>
       <footer className="border-t border-line bg-white px-6 py-4 text-center text-[11px] text-ink-faint">
